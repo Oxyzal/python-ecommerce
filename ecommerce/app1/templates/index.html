@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> voici tout nos produits </h1>
+
+    {% block content %}
+    <div style="display:flex; flex-direction:column;">
+        {% for product in products%}
+        <div style="display:flex; gap:10px;">
+            <p>{{product.name}}</p>
+            <img src="{{product.img}}" alt="{{product.name}}">
+            <a href="{% url 'show' product.id %}">Voir</a>
+			<a href="{% url 'edit' product.id %}">Editer</a>
+			<a href="{% url 'delete' product.id %}">Supprimer</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body>
+</html>
